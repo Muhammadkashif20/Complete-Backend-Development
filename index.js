@@ -3,37 +3,40 @@ import morgan from "morgan";
 const app = express();
 const PORT = 4000;
 const tasks = [
-    { id: 1, task: "Buy groceries" },
-    { id: 2, task: "Complete React assignment" },
-    { id: 3, task: "Call the electrician" },
-    { id: 4, task: "Go for a walk" },
-    { id: 5, task: "Read a book" }
-  ];
-// Application Level Middleware
-  const middleware=(req,res,next)=>{
-    console.log("app level middleware=> ",Date.now());
-    next()
-  }
-app.use(middleware)
-// The End Application Level Middleware
-// show send req name middleware:-
-app.use(morgan('tiny'))
-// The End show send req name middleware:-
+  { id: 1, task: "Buy groceries" },
+  { id: 2, task: "Complete React assignment" },
+  { id: 3, task: "Call the electrician" },
+  { id: 4, task: "Go for a walk" },
+  { id: 5, task: "Read a book" },
+];
+const middleware = (req, res, next) => {
+  // console.log("app level middleware=> ",Date.now());
+  req.requestBy = "M.KASHIF";
+  // res.status(500).send("System Wer gaya")
+  // res.responseBy="sir Bilal"
+  next();
+};
+
+// app.use(middleware);
+app.use(express.json());
+app.use(morgan("tiny"));
 
 app.get("/", (req, res) => {
-  // console.log(req);
-  res.send(tasks);
+  // console.log("req.requestBy=> ", req.requestBy);
+  // console.log("res.responseBy=> ", res.responseBy);
+  console.log("req.body=> ", req.body);
+
+  res.send("Get Request Called");
 });
-app.post("/", (req, res) => {
-  // console.log(req);
+
+app.post("/", middleware, (req, res) => {
   res.send("Hello World To First Api POST");
+  console.log("req.body=> ", req.body);
 });
 app.put("/", (req, res) => {
-  // console.log(req);
   res.send("Hello World To First Api PUT");
 });
 app.delete("/", (req, res) => {
-  // console.log(req);
   res.send("Hello World To First Api DELETE");
 });
 app.listen(PORT, () => console.log("Server Is Running on PORT=> ", PORT));

@@ -5,4 +5,10 @@
 2.req behjo ge to response ayega res bhejna lazmi h.
 --> 
 <!-- Class 2 Create REST APIs (POST, GET, PUT, DELETE) and Use Postman.  -->
-<!--Class 3 What is Middleware in Node.js Express? A Complete Guide -->
+<!--Class 3 What is Middleware in Node.js Express? A Complete Guide 
+1.Run all over the appliation (application level middleware)
+2.particular run the appliation (route level middleware)
+3.show send req name  (modern middleware)
+middleware ke through hm res me koi key bhi add krsakte h.
+
+-->
