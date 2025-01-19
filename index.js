@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import userRoute from "./routers/users.js"
 const app = express();
 const PORT = 4000;
 const tasks = [
@@ -20,12 +21,11 @@ const middleware = (req, res, next) => {
 // app.use(middleware);
 app.use(express.json());
 app.use(morgan("tiny"));
-
+app.use("/user",userRoute)
 app.get("/", (req, res) => {
   // console.log("req.requestBy=> ", req.requestBy);
   // console.log("res.responseBy=> ", res.responseBy);
-  console.log("req.body=> ", req.body);
-
+  // console.log("req.body=> ", req.body);
   res.send("Get Request Called");
 });
 

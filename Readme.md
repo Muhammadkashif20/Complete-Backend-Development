@@ -10,5 +10,10 @@
 2.particular run the appliation (route level middleware)
 3.show send req name  (modern middleware)
 middleware ke through hm res me koi key bhi add krsakte h.
-
 -->
+<!-- 4.How to Create Different Routes in Node.js Express?
+1.router folder create and users file with all user information. 
+2.adding user's withpost api .
+3.make a dynamic routing like /:id
+
+ -->
