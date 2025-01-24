@@ -17,3 +17,4 @@ middleware ke through hm res me koi key bhi add krsakte h.
 3.make a dynamic routing like /:id
 
  -->
+ <!-- node js connect db dotenv  nodejs me dotenv hota h -->
