@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-import userRoute from "./routers/users.js"
+import userRouter from "./routers/users.js"
 const app = express();
 const PORT = 4000;
 const tasks = [
@@ -21,22 +21,23 @@ const middleware = (req, res, next) => {
 // app.use(middleware);
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use("/user",userRoute)
+app.use("/user",userRouter)
 app.get("/", (req, res) => {
   // console.log("req.requestBy=> ", req.requestBy);
   // console.log("res.responseBy=> ", res.responseBy);
   // console.log("req.body=> ", req.body);
-  res.send("Get Request Called");
+  res.send(tasks);
 });
 
-app.post("/", middleware, (req, res) => {
-  res.send("Hello World To First Api POST");
-  console.log("req.body=> ", req.body);
-});
-app.put("/", (req, res) => {
-  res.send("Hello World To First Api PUT");
-});
-app.delete("/", (req, res) => {
-  res.send("Hello World To First Api DELETE");
-});
+// app.post("/", middleware, (req, res) => {
+//   res.send("Hello World To First Api POST");
+//   console.log("req.body=> ", req.body);
+// });
+// app.put("/", (req, res) => {
+//   res.send("Hello World To First Api PUT");
+// });
+// app.delete("/", (req, res) => {
+//   res.send("Hello World To First Api DELETE");
+// });
 app.listen(PORT, () => console.log("Server Is Running on PORT=> ", PORT));
+
